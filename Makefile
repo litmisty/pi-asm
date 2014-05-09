@@ -1,5 +1,5 @@
 # Makefile
-all: bin/first bin/02_sum bin/03_load01 bin/03_store01
+all: bin/first bin/02_sum bin/03_load01 bin/03_store01 bin/04_compare
 
 # ----- 01 
 bin/first: obj/first.o
@@ -26,6 +26,14 @@ bin/03_store01: obj/03_store01.o
 obj/03_load01.o : 03_load01.s
 	as -o $@ $<
 obj/03_store01.o : 03_store01.s
+	as -o $@ $<
+
+# ----- 04
+
+bin/04_compare: obj/04_compare.o
+	gcc -o $@ $+
+
+obj/04_compare.o : 04_compare.s
 	as -o $@ $<
 
 # ----- clean
